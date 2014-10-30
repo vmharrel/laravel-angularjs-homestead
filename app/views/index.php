@@ -87,7 +87,7 @@
 	<!-- User Table -->
 	<!-- hide user table if the loading variable is true -->
 	<table class="table" ng-hide="loading">
-		<h3>Zipongo Foosball User Rankings</h3>
+		<h3>Foosball User Rankings</h3>
 		<thead>
 			<tr>
 				<th>Total Wins</th>

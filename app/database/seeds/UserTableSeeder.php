@@ -9,28 +9,28 @@ class UserTableSeeder extends Seeder
 
 		User::create(array(
 			'user_name' => 'Alex',
-			'email' => 'alex@zipongo.com',
-			'password' => 'zipongo',
+			'email' => 'alex@zip.com',
+			'password' => 'zip',
 			'created_utc' => time()*1000
 		));
 
 		User::create(array(
 			'user_name' => 'Barrett',
-			'email' => 'barrett@zipongo.com',
-			'password' => 'zipongo',
+			'email' => 'barrett@zip.com',
+			'password' => 'zip',
 			'created_utc' => time()*1000
 		));
 
 		User::create(array(
 			'user_name' => 'Joel',
-			'email' => 'joel@zipongo.com',
-			'password' => 'zipongo',
+			'email' => 'joel@zip.com',
+			'password' => 'zip',
 			'created_utc' => time()*1000
 		));
 		User::create(array(
 			'user_name' => 'Tim',
-			'email' => 'tim@zipongo.com',
-			'password' => 'zipongo',
+			'email' => 'tim@zip.com',
+			'password' => 'zip',
 			'created_utc' => time()*1000
 		));
 	}
