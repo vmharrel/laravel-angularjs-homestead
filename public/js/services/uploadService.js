@@ -1,24 +1,15 @@
-angular.module('userService', [])
+angular.module('uploadService', [])
 
-	.factory('User', function($http) {
+	.factory('Upload', function($http) {
 
 		return {
-			get : function() {
-				return $http.get('api/user');
-			},
-			show : function(id) {
-				return $http.get('api/user/' + id);
-			},
-			save : function(userData) {
+			save : function(uploadData) {
 				return $http({
 					method: 'POST',
-					url: 'api/user',
+					url: 'api/upload',
 					headers: { 'Content-Type' : 'application/x-www-form-urlencoded' },
-					data: $.param(userData)
+					data: $.param(uploadData)
 				});
-			},
-			destroy : function(id) {
-				return $http.delete('api/user/' + id);
 			}
 		}
 

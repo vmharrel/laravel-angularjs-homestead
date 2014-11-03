@@ -31,11 +31,33 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('password');
 
+	/**
+	* Get user id by user_name
+	*
+	*/
+	public static function getUserIdByUserName($name)
+	{
+		date_default_timezone_set('UTC');
+		$user_id = DB::table('user')
+			->where('user_name', '=', $name)
+			->pluck('id');
+
+    	return $user_id;
+	}
+
+	/**
+	* Get Scores
+	*
+	*/
     public function scores()
     {
         return $this->hasMany('Score');
     }
 
+	/**
+	* Get Rankings
+	*
+	*/
 	public static function userScores()
 	{
 		$userRankings = DB::table('user')

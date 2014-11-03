@@ -1,59 +1,41 @@
 angular.module('addCtrl', [])
 
-	.controller('addController', function($scope, $http, User) {
-		// object to hold all the data for the new user form
-		$scope.userData = {};
+	.controller('addController', function($scope, $http, Score) {
+		// object to hold all the data for the new score form
+		$scope.scoreData = {};
 
 		// loading variable to show the spinning loading icon
 		$scope.loading = true;
 		
-		// get all the users first and bind it to the $scope.users object
-		User.get()
+		// get all the score first and bind it to the $scope.score object
+		Score.get()
 			.success(function(data) {
-				$scope.users = data;
+				$scope.scores = data;
 				$scope.loading = false;
 				console.log(data);
 			});
 
 
 		// function to handle submitting the form
-		$scope.submitUser = function() {
+		$scope.submitScore = function() {
 			$scope.loading = true;
 
-			// save the user. pass in user data from the form
-			User.save($scope.userData)
+			// save the score. pass in score data from the form
+			Score.save($scope.scoreData)
 				.success(function(data) {
 
-					// if successful, we'll need to refresh the user list
-					User.get()
+					// if successful, we'll need to refresh the score list
+					Score.get()
 						.success(function(getData) {
-							$scope.users = getData;
+							$scope.scores = getData;
 							$scope.loading = false;
 							console.log(data);
-							console.log("User created:" + data)
+							console.log("Game saved:" + data)
 						});
 
 				})
 				.error(function(data) {
 					console.log(data);
-				});
-		};
-
-		// function to handle deleting a user
-		$scope.deleteUser = function(id) {
-			$scope.loading = true; 
-
-			User.destroy(id)
-				.success(function(data) {
-
-					// if successful, we'll need to refresh the user list
-					User.get()
-						.success(function(getData) {
-							$scope.users = getData;
-							$scope.loading = false;
-							console.log(data);
-						});
-
 				});
 		};
 

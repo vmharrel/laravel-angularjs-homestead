@@ -17,7 +17,7 @@ angular.module('uploadCtrl', [])
 
 
 		// function to handle submitting the form
-		$scope.submitUser = function() {
+		$scope.uploadCSV = function() {
 			$scope.loading = true;
 
 			// save the user. pass in user data from the form

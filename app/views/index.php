@@ -46,9 +46,9 @@
         </div>
 
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><i class="fa fa-home"></i> Rankings</a></li>
-            <li><a href="#scores"><i class="fa fa-shield"></i> Upload</a></li>
-            <li><a href="#game"><i class="fa fa-comment"></i> Add</a></li>
+            <li><a href="/"><i class="fa fa-home"></i> Rankings</a></li>
+            <li><a href="/csv"><i class="fa fa-shield"></i> Upload</a></li>
+            <li><a href="/score"><i class="fa fa-comment"></i> Add</a></li>
         </ul>
     </div>
     </nav>

@@ -9,7 +9,7 @@ class ScoreController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		return Response::json(Score::getLastGame());
 	}
 
 

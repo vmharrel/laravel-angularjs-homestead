@@ -1,24 +1,18 @@
 angular.module('addService', [])
 
-	.factory('User', function($http) {
+	.factory('Score', function($http) {
 
 		return {
 			get : function() {
-				return $http.get('api/user');
+				return $http.get('api/score');
 			},
-			show : function(id) {
-				return $http.get('api/user/' + id);
-			},
-			save : function(userData) {
+			save : function(scoreData) {
 				return $http({
 					method: 'POST',
-					url: 'api/user',
+					url: 'api/score',
 					headers: { 'Content-Type' : 'application/x-www-form-urlencoded' },
-					data: $.param(userData)
+					data: $.param(scoreData)
 				});
-			},
-			destroy : function(id) {
-				return $http.delete('api/user/' + id);
 			}
 		}
 

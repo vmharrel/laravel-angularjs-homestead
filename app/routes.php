@@ -20,6 +20,16 @@ Route::get('/', function()
 	return View::make('index');
 });
 
+Route::get('/csv', function()
+{
+	return View::make('uploadCSV');
+});
+
+Route::get('/score', function()
+{
+	return View::make('addScore');
+});
+
 #################################################
 ################## API ROUTES ##################
 #################################################
@@ -41,14 +51,26 @@ Route::post('api/upload', function()
     		Log::debug("Game ID = ".$game_id);
 		
 		# Set User 1 data
-	    $user_1_id = $data['user_1_id'];
+		$user_1_name = Input::get('user_1_id');
+		Log::debug("User 1 Name = " . $user_1_name);
+		if (gettype($user_1_name) == 'string') {
+			$user_1_id = User::getUserIdByUserName($user_1_name);
+	    } else {
+			$user_1_id = Input::get('user_1_id');
+		}
 	    	Log::debug("User 1 ID = ".$user_1_id);
 	    $user_1_score = $data['user_1_score'];
 	    	Log::debug("User 1 score = ".$user_1_score);
 	    $user_1_winner = false;
 
 		# Set User 2 data
-	    $user_2_id = $data['user_2_id'];
+		$user_2_name = Input::get('user_2_id');
+		Log::debug("User 2 Name = " . $user_2_name);
+		if (gettype($user_2_name) == 'string') {
+			$user_2_id = User::getUserIdByUserName($user_2_name);
+	    } else {
+			$user_2_id = Input::get('user_2_id');
+		}
 	    	Log::debug("User 2 ID = ".$user_2_id);
 	    $user_2_score = $data['user_2_score'];
 	    	Log::debug("User 2 score = ".$user_2_score);
@@ -77,6 +99,12 @@ Route::post('api/upload', function()
 
 });
 
+Route::get('api/score', function()
+{    
+    # JSON Response
+	return Response::json(array(Score::getLastGame()));
+});
+
 Route::post('api/score', function()
 {
 	(array) $scores = Input::json();
@@ -87,14 +115,27 @@ Route::post('api/score', function()
     Log::debug("Game ID = ".$game_id);
 
 	# Set User 1 data
-    $user_1_id = Input::get('user_1_id');
+	$user_1_name = Input::get('user_1_id');
+	Log::debug("User 1 Name = " . $user_1_name);
+	if (gettype($user_1_name) == 'string') {
+		$user_1_id = User::getUserIdByUserName($user_1_name);
+    } else {
+		$user_1_id = Input::get('user_1_id');
+	}
+	
     Log::debug("User 1 ID = ".$user_1_id);
     $user_1_score = Input::get('user_1_score');
     Log::debug("User 1 score = ".$user_1_score);
     $user_1_winner = false;
 
 	# Set User 2 data
-    $user_2_id = Input::get('user_2_id');
+	$user_2_name = Input::get('user_2_id');
+	Log::debug("User 2 Name = " . $user_2_name);
+	if (gettype($user_2_name) == 'string') {
+		$user_2_id = User::getUserIdByUserName($user_2_name);
+    } else {
+		$user_2_id = Input::get('user_2_id');
+	}
     Log::debug("User 2 ID = ".$user_2_id);
     $user_2_score = Input::get('user_2_score');
     Log::debug("User 2 score = ".$user_2_score);

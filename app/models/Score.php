@@ -17,6 +17,22 @@ class Score extends Eloquent {
 	protected $fillable = array('user_id', 'game_id', 'score', 'winner', 'created_utc');
 
    	/**
+	 * Get Last Game Score
+	 *
+	 * @var boolean
+	 */
+	public static function getLastGame()
+	{
+		$lastGame = DB::table('score')
+			->select(DB::raw('*'))
+    		->orderBy('id', 'desc')
+    		->take(2)
+    		->get();
+
+    	return $lastGame;
+	}
+
+   	/**
 	 * Insert new Score
 	 *
 	 * @var boolean
